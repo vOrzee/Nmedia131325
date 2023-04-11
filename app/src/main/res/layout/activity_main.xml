@@ -4,17 +4,151 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView2"
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/nmedia"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_foreground"
+        />
+
+
+    <TextView
+        android:id="@+id/authorTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        android:text="Нетология. Университет интернет профессий будущего !"
+        />
+    <TextView
+        android:id="@+id/dateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/authorTextView"
+        android:text="08 апреля 2023 года"
+        />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:backgroundTint="@color/white"
+        android:textColorLink="@color/black"
+        app:icon="@drawable/ic_baseline_more_vert_24"
+        app:iconTint="#0B0A0A"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/Barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="imageView"
+/>
+
+    <TextView
+        android:id="@+id/aboutTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingTop="50dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="50dp"
+        android:text="К нам приходят и начинающие специалисты, и руководители крупных компаний. Всех объединяет одно — желание добиться большего, чем есть сейчас.Мы даём те знания и навыки, которые помогают реализовать себя в профессии, больше зарабатывать, оптимизировать рутину и заниматься более сложными, но интересными задачами. "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_editor_absoluteX="0dp" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/Barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="aboutTextView"
+        />
+
+    <TextView
+        android:id="@+id/likedsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Likes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        />
+
+    <ImageView
+        android:id="@+id/loveImageView"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutTextView"
+        app:srcCompat="@drawable/ic_baseline_favorite_border_24"
+        />
+
+    <TextView
+        android:id="@+id/loveTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="44dp"
+        android:text="10"
+        app:layout_constraintBottom_toBottomOf="@+id/loveImageView"
+        app:layout_constraintStart_toEndOf="@+id/loveImageView"
+        app:layout_constraintTop_toBottomOf="@+id/aboutTextView" />
+
+
+    <ImageView
+        android:id="@+id/repostImageView"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="104dp"
+        app:layout_constraintBottom_toBottomOf="@+id/loveImageView"
+        app:layout_constraintStart_toEndOf="@+id/loveTextView"
+        app:layout_constraintTop_toTopOf="@+id/loveImageView"
+        app:srcCompat="@android:drawable/ic_menu_share" />
+
+    <TextView
+        android:id="@+id/repostTextView"
+        android:layout_width="50dp"
+        android:layout_height="15dp"
+        android:text="15K"
+        app:layout_constraintBottom_toBottomOf="@+id/loveImageView"
+        app:layout_constraintStart_toEndOf="@+id/repostImageView"
+        app:layout_constraintTop_toTopOf="@+id/loveImageView"
+        />
+
+    <ImageView
+        android:id="@+id/seeImageView"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/loveImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/repostTextView"
+        app:layout_constraintTop_toTopOf="@+id/loveImageView"
+        app:srcCompat="@drawable/ic_baseline_remove_red_eye_24" />
+
+    <TextView
+        android:id="@+id/seeTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="3M"
+        app:layout_constraintBottom_toBottomOf="@+id/seeImageView"
+        app:layout_constraintStart_toEndOf="@+id/seeImageView"
+        app:layout_constraintTop_toTopOf="@+id/seeImageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
