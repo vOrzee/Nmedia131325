@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/avatarImageView"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="4dp"
@@ -26,15 +26,15 @@
         android:maxLines="1"
         android:ellipsize="end"
         app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/avatarImageView"
+        app:layout_constraintTop_toTopOf="@+id/avatarImageView"
         android:text="Нетология. Университет интернет профессий будущего !"
         />
     <TextView
         android:id="@+id/dateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/avatarImageView"
         app:layout_constraintTop_toBottomOf="@+id/authorTextView"
         android:text="08 апреля 2023 года"
         />
@@ -56,7 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="imageView"
+        app:constraint_referenced_ids="avatarImageView"
 />
 
     <TextView
@@ -70,7 +70,7 @@
         android:text="К нам приходят и начинающие специалисты, и руководители крупных компаний. Всех объединяет одно — желание добиться большего, чем есть сейчас.Мы даём те знания и навыки, которые помогают реализовать себя в профессии, больше зарабатывать, оптимизировать рутину и заниматься более сложными, но интересными задачами. "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/avatarImageView"
         app:layout_editor_absoluteX="0dp" />
 
     <androidx.constraintlayout.widget.Barrier
@@ -91,7 +91,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aboutTextView"
-        app:srcCompat="@drawable/ic_baseline_favorite_border_24"
+        app:srcCompat="@drawable/ic_baseline_like"
         />
 
     <TextView
@@ -120,7 +120,7 @@
         android:id="@+id/repostTextView"
         android:layout_width="50dp"
         android:layout_height="15dp"
-        android:text="15K"
+        android:text="999"
         app:layout_constraintBottom_toBottomOf="@+id/loveImageView"
         app:layout_constraintStart_toEndOf="@+id/repostImageView"
         app:layout_constraintTop_toTopOf="@+id/loveImageView"
