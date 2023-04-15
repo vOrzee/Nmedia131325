@@ -1,58 +1,50 @@
 package ru.netology.nmedia
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.dto.Post
+import ru.netology.nmedia.viewmodel.PostViewModel
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val post = Post(
-           id = 1,
-           author = "Нетология. Университет интернет профессий будущего !",
-           content = "К нам приходят и начинающие специалисты, и руководители крупных компаний. Всех объединяет одно — желание добиться большего, чем есть сейчас.Мы даём те знания и навыки, которые помогают реализовать себя в профессии, больше зарабатывать, оптимизировать рутину и заниматься более сложными, но интересными задачами.  ",
-           published = "08 апреля 2023 года ",
-           likeByMe = false,
-           likes =11,
-           repost = 1499999,
-           see = 1099
-        )
-
-
-        with(binding){
-        authorTextView.text = post.author
-        dateTextView.text = post.published
-        aboutTextView.text = post.content
-        loveTextView.text = Calculate(post.likes)
-        repostTextView.text = Calculate(post.repost)
-        seeTextView.text = Calculate(post.see)
-        if (post.likeByMe) {
-          loveImageView.setImageResource(R.drawable.ic_baseline_liked)
-        }
-        binding.loveImageView.setOnClickListener{
-            post.likeByMe = !post.likeByMe
-
-            binding.loveImageView.setImageResource(
-                if (post.likeByMe) R.drawable.ic_baseline_liked
-                else R.drawable.ic_baseline_like
-            )
-            if (post.likeByMe) post.likes++ else post.likes--
+        val viewModel: PostViewModel by viewModels()
+        viewModel.data.observe(this) { post ->
+        with(binding) {
+            authorTextView.text = post.author
+            dateTextView.text = post.published
+            aboutTextView.text = post.content
             loveTextView.text = Calculate(post.likes)
-        }
-        binding.repostImageView.setOnClickListener{
-            post.repost++
-            repostTextView.text = Calculate(post.repost)
-        }
-        binding.seeImageView.setOnClickListener{
-            post.see++
-            seeTextView.text = Calculate(post.see)
+            repostTextView.text = Calculate(post.reposts)
+            seeTextView.text = Calculate(post.sees)
+            if (post.likeByMe) loveImageView.setImageResource(R.drawable.ic_baseline_liked)
+            else loveImageView.setImageResource(R.drawable.ic_baseline_like)
+
+            binding.loveImageView.setOnClickListener {
+
+                binding.loveImageView.setImageResource(
+                    if (post.likeByMe) R.drawable.ic_baseline_liked
+                    else R.drawable.ic_baseline_like
+                )
+                viewModel.likes()
+                loveTextView.text = Calculate(post.likes)
+            }
+
+            binding.repostImageView.setOnClickListener {
+                viewModel.reposts()
+                repostTextView.text = Calculate(post.reposts)
+            }
+
+            binding.seeImageView.setOnClickListener {
+                viewModel.sees()
+                seeTextView.text = Calculate(post.sees)
+            }
         }
     }
-
 
     }
 }
