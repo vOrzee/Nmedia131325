@@ -23,27 +23,18 @@ class MainActivity : AppCompatActivity() {
             seeTextView.text = Calculate(post.sees)
             if (post.likeByMe) loveImageView.setImageResource(R.drawable.ic_baseline_liked)
             else loveImageView.setImageResource(R.drawable.ic_baseline_like)
-
+        }
             binding.loveImageView.setOnClickListener {
-
-                binding.loveImageView.setImageResource(
-                    if (post.likeByMe) R.drawable.ic_baseline_liked
-                    else R.drawable.ic_baseline_like
-                )
                 viewModel.likes()
-                loveTextView.text = Calculate(post.likes)
             }
-
             binding.repostImageView.setOnClickListener {
                 viewModel.reposts()
-                repostTextView.text = Calculate(post.reposts)
             }
-
             binding.seeImageView.setOnClickListener {
                 viewModel.sees()
-                seeTextView.text = Calculate(post.sees)
             }
-        }
+
+
     }
 
     }
