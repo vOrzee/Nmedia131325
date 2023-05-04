@@ -1,5 +1,6 @@
 package ru.netology.nmedia.repository
 
+import androidx.core.os.persistableBundleOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
@@ -36,8 +37,14 @@ class PostRepositoryInMemory : PostRepository {
     override fun likeById(id: Long) {
         post = post.map { post ->
             if (post.id == id) {
-                post.copy(likedByMe = !post.likedByMe)
-            } else {
+                if (post.likedByMe) {
+                    post.copy(likedByMe = !post.likedByMe, likes = post.likes - 1)
+                }
+                else {
+                    post.copy(likedByMe = !post.likedByMe, likes = post.likes + 1)
+                }
+            }
+             else {
                 post
             }
         }
@@ -47,7 +54,7 @@ class PostRepositoryInMemory : PostRepository {
     override fun repostById(id: Long) {
         post = post.map { post ->
             if (post.id == id) {
-                post.copy()
+                post.copy(reposts = post.reposts+1)
             } else {
                 post
             }
@@ -58,7 +65,7 @@ class PostRepositoryInMemory : PostRepository {
     override fun seeById(id: Long) {
         post = post.map { post ->
             if (post.id == id) {
-                post.copy()
+                post.copy(sees = post.sees+1)
             } else {
                 post
             }

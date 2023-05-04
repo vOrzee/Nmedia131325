@@ -110,22 +110,21 @@
     <ImageView
         android:id="@+id/repostImageView"
         android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="40dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/loveImageView"
-        app:layout_constraintStart_toEndOf="@+id/loveTextView"
+        app:layout_constraintEnd_toStartOf="@+id/repostTextView"
         app:layout_constraintTop_toTopOf="@+id/loveImageView"
         app:srcCompat="@android:drawable/ic_menu_share" />
 
     <TextView
         android:id="@+id/repostTextView"
         android:layout_width="50dp"
-        android:layout_height="15dp"
+        android:layout_height="wrap_content"
         android:text="999"
         app:layout_constraintBottom_toBottomOf="@+id/loveImageView"
-        app:layout_constraintStart_toEndOf="@+id/repostImageView"
-        app:layout_constraintTop_toTopOf="@+id/loveImageView"
-        />
+        app:layout_constraintEnd_toStartOf="@+id/seeImageView"
+        app:layout_constraintStart_toEndOf="@+id/loveTextView"
+        app:layout_constraintTop_toTopOf="@+id/loveImageView" />
 
     <ImageView
         android:id="@+id/seeImageView"
@@ -133,7 +132,7 @@
         android:layout_height="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/loveImageView"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="200dp"
+        android:layout_marginEnd="50dp"
         app:layout_constraintTop_toTopOf="@+id/loveImageView"
         app:srcCompat="@drawable/ic_baseline_remove_red_eye_24" />
 

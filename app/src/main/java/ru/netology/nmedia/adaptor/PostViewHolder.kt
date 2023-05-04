@@ -26,12 +26,15 @@ class PostViewHolder(
             )
             binding.loveImageView.setOnClickListener {
                 onLikeListener(post)
+//                loveTextView.text = Calculate(post.likes)
             }
            binding.repostImageView.setOnClickListener {
                onShareListener(post)
+//               repostTextView.text = Calculate(post.reposts)
            }
            binding.seeImageView.setOnClickListener {
                onViewListener(post)
+//               seeTextView.text = Calculate(post.sees)
            }
 
 
