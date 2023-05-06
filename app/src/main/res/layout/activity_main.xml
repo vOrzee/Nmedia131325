@@ -16,22 +16,22 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/card_post"
             />
+
         <EditText
             android:id="@+id/content"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:inputType="textMultiLine"
-            android:hint="Input post"
+            android:hint="@string/input_post"
             android:importantForAutofill="no"
+            android:inputType="textMultiLine"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/save"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/save"
-            />
+
+            app:layout_constraintEnd_toStartOf="@+id/buttonSave"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/save"
+            android:id="@+id/buttonSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -39,12 +39,12 @@
             app:srcCompat="@drawable/ic_baseline_assignment_turned_in_24" />
 
         <ImageView
-            android:id="@+id/cancel"
+            android:id="@+id/buttonCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/save"
+
+            app:layout_constraintBottom_toTopOf="@+id/buttonSave"
             app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="invisible"
             app:srcCompat="@drawable/ic_baseline_cancel_presentation_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -47,14 +47,16 @@ class MainActivity : AppCompatActivity() {
                 }
             }
     )
+        activityMainBinding.buttonCancel.visibility = View.INVISIBLE
+
         viewModel.edited.observe(this){
             if(it.id == 0L) return@observe
-            activityMainBinding.cancel.visibility = View.VISIBLE
+            activityMainBinding.buttonCancel.visibility = View.VISIBLE
             activityMainBinding.content.requestFocus()
             activityMainBinding.content.setText(it.content)
         }
 
-        activityMainBinding.save.setOnClickListener{
+        activityMainBinding.buttonSave.setOnClickListener{
             with(activityMainBinding.content){
                 val content = text?.toString()
                 if(content.isNullOrBlank()) {
@@ -66,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 viewModel.changeContent(content)
                 viewModel.save()
-                activityMainBinding.cancel.visibility = View.INVISIBLE
+                activityMainBinding.buttonCancel.visibility = View.INVISIBLE
 
                 setText("")
                 clearFocus()
@@ -74,9 +76,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        activityMainBinding.cancel.setOnClickListener{
+        activityMainBinding.buttonCancel.setOnClickListener{
             with(activityMainBinding.content){
-                activityMainBinding.cancel.visibility = View.INVISIBLE
+                activityMainBinding.buttonCancel.visibility = View.INVISIBLE
                 setText("")
                 clearFocus()
                 AndroidUtils.hideKeyboard(this)

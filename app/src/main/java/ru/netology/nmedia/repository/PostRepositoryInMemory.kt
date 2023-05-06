@@ -108,7 +108,4 @@ class PostRepositoryInMemory : PostRepository {
         data.value = posts
         }
 
-    override fun clearEdit(post: Post) {
-        data.value = posts
-    }
     }
