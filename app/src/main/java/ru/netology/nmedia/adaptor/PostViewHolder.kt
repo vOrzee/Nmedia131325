@@ -1,5 +1,6 @@
 package ru.netology.nmedia.adaptor
 
+import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import ru.netology.nmedia.R
 import ru.netology.nmedia.databinding.CardPostBinding
@@ -8,9 +9,7 @@ import ru.netology.nmedia.dto.Post
 
 class PostViewHolder(
     private val binding: CardPostBinding,
-    private val onLikeListener: (Post) -> Unit,
-    private val onShareListener: (Post) -> Unit,
-    private val onViewListener: (Post) -> Unit
+    private val listener: PostListener,
 ) : ViewHolder(binding.root) {
     fun bind(post:Post){
         with(binding) {
@@ -25,18 +24,37 @@ class PostViewHolder(
             else R.drawable.ic_baseline_like
             )
             binding.loveImageView.setOnClickListener {
-                onLikeListener(post)
-//                loveTextView.text = Calculate(post.likes)
+                listener.onLike(post)
             }
            binding.repostImageView.setOnClickListener {
-               onShareListener(post)
-//               repostTextView.text = Calculate(post.reposts)
+               listener.onView(post)
            }
            binding.seeImageView.setOnClickListener {
-               onViewListener(post)
-//               seeTextView.text = Calculate(post.sees)
+               listener.onSee(post)
            }
-
+           binding.menu.setOnClickListener{
+                PopupMenu(it.context, it).apply {
+                    inflate(R.menu.post_options)
+                    setOnMenuItemClickListener { item ->
+                        when(item.itemId){
+                            R.id.remove -> {
+                                listener.onRemove(post)
+                                true
+                            }
+                            R.id.edit -> {
+                                listener.onEdit(post)
+                                true
+                            }
+                            R.id.cancel -> {
+                                listener.onCancel(post)
+                                true
+                            }
+                        else -> false
+                        }
+                    }
+                }
+                    .show()
+           }
 
         }
 
