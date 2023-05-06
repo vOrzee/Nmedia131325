@@ -26,7 +26,6 @@
         android:layout_marginTop="4dp"
         android:maxLines="1"
         android:ellipsize="end"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
         app:layout_constraintStart_toEndOf="@+id/avatarImageView"
         app:layout_constraintTop_toTopOf="@+id/avatarImageView"
         android:text="Нетология. Университет интернет профессий будущего !"
