@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onCancel(post: Post) {
-                    viewModel.clearEdit(post)
+                    viewModel.clearEdit()
                 }
             }
     )
