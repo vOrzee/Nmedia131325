@@ -42,12 +42,10 @@ class MainActivity : AppCompatActivity() {
                     viewModel.seesById(post.id)
                 }
 
-                override fun onCancel(post: Post) {
-                    viewModel.clearEdit()
-                }
             }
     )
         activityMainBinding.buttonCancel.visibility = View.INVISIBLE
+
 
         viewModel.edited.observe(this){
             if(it.id == 0L) return@observe
@@ -78,6 +76,7 @@ class MainActivity : AppCompatActivity() {
 
         activityMainBinding.buttonCancel.setOnClickListener{
             with(activityMainBinding.content){
+                viewModel.clearEdit()
                 activityMainBinding.buttonCancel.visibility = View.INVISIBLE
                 setText("")
                 clearFocus()

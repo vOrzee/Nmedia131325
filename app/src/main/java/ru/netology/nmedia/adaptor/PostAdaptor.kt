@@ -12,7 +12,6 @@ interface PostListener{
     fun onLike(post: Post)
     fun onView(post: Post)
     fun onSee(post: Post)
-    fun onCancel(post: Post)
 }
 
 class PostAdaptor(
