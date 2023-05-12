@@ -10,8 +10,9 @@ interface PostListener{
     fun onRemove(post:Post)
     fun onEdit(post: Post)
     fun onLike(post: Post)
-    fun onView(post: Post)
+    fun onShare(post: Post)
     fun onSee(post: Post)
+    fun onViewVideo(post:Post)
 }
 
 class PostAdaptor(

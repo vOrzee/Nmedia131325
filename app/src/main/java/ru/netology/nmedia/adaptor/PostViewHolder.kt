@@ -4,6 +4,7 @@ import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import ru.netology.nmedia.R
 import ru.netology.nmedia.activity.MainActivity
+import ru.netology.nmedia.activity.editFlag
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.dto.Calculate
@@ -29,7 +30,7 @@ class PostViewHolder(
                 listener.onLike(post)
             }
             binding.repostImageView.setOnClickListener {
-                listener.onView(post)
+                listener.onShare(post)
             }
             binding.seeImageView.setOnClickListener {
                 listener.onSee(post)
@@ -44,7 +45,12 @@ class PostViewHolder(
                                 true
                             }
                             R.id.edit -> {
+                                editFlag = 1
                                 listener.onEdit(post)
+                                true
+                            }
+                            R.id.viewvideo -> {
+                                listener.onViewVideo(post)
                                 true
                             }
                             else -> false

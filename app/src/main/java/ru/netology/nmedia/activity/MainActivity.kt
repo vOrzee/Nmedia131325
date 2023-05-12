@@ -1,16 +1,22 @@
 package ru.netology.nmedia.activity
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
+import androidx.activity.result.launch
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import ru.netology.nmedia.R
 import ru.netology.nmedia.adaptor.PostAdaptor
 import ru.netology.nmedia.adaptor.PostListener
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.dto.Post
-import ru.netology.nmedia.utils.AndroidUtils
 import ru.netology.nmedia.viewmodel.PostViewModel
+
+
+var editFlag = 0
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,21 +26,50 @@ class MainActivity : AppCompatActivity() {
 
         val viewModel: PostViewModel by viewModels()
 
-        val adaptor = PostAdaptor (
-            object : PostListener{
+        val newPostContractAdd = registerForActivityResult(NewPostActivity.ContractAdd) { result ->
+            result ?: return@registerForActivityResult
+            viewModel.changeContent(result)
+            viewModel.save()
+        }
+        val newPostContractEdit = registerForActivityResult(NewPostActivity.ContractEdit) { result ->
+            result ?: return@registerForActivityResult
+            viewModel.changeContent(result)
+            viewModel.save()
+        }
+
+        val adaptor = PostAdaptor(
+            object : PostListener {
                 override fun onRemove(post: Post) {
                     viewModel.removeById(post.id)
                 }
 
                 override fun onEdit(post: Post) {
-                    viewModel.edit(post)
+                    val intentEdit = Intent().apply {
+                        action = Intent.ACTION_EDIT
+                        putExtra(Intent.EXTRA_TEXT, post.content)
+                        type = "text/plain"
+                    }
+                    editFlag = 1
+                    viewModel.editById(post)
+
+
+
+                    newPostContractEdit.launch()
                 }
 
                 override fun onLike(post: Post) {
                     viewModel.likesById(post.id)
                 }
 
-                override fun onView(post: Post) {
+                override fun onShare(post: Post) {
+                    val intentShare = Intent().apply {
+                        action = Intent.ACTION_SEND
+                        putExtra(Intent.EXTRA_TEXT, post.content)
+                        type = "text/plain"
+                    }
+                    val shareIntent =
+                        Intent.createChooser(intentShare, getString(R.string.chooser_share_post))
+                    startActivity(shareIntent)
                     viewModel.repostsById(post.id)
                 }
 
@@ -42,52 +77,27 @@ class MainActivity : AppCompatActivity() {
                     viewModel.seesById(post.id)
                 }
 
-            }
-    )
-        activityMainBinding.buttonCancel.visibility = View.INVISIBLE
-
-
-        viewModel.edited.observe(this){
-            if(it.id == 0L) return@observe
-            activityMainBinding.buttonCancel.visibility = View.VISIBLE
-            activityMainBinding.content.requestFocus()
-            activityMainBinding.content.setText(it.content)
-        }
-
-        activityMainBinding.buttonSave.setOnClickListener{
-            with(activityMainBinding.content){
-                val content = text?.toString()
-                if(content.isNullOrBlank()) {
-                    Toast.makeText(
-                        this@MainActivity,
-                        "Context must not be empty",
-                        Toast.LENGTH_SHORT).show()
-                    return@setOnClickListener
+                override fun onViewVideo(post: Post) {
+                    if (post.video.isNullOrEmpty()){}
+                    else {
+                        val intentVideo = Intent(Intent.ACTION_VIEW, Uri.parse(post.video))
+                        startActivity(intentVideo)
+                    }
                 }
-                viewModel.changeContent(content)
-                viewModel.save()
-                activityMainBinding.buttonCancel.visibility = View.INVISIBLE
 
-                setText("")
-                clearFocus()
-                AndroidUtils.hideKeyboard(this)
             }
+        )
+
+        activityMainBinding.add.setOnClickListener{
+            newPostContractAdd.launch()
         }
 
-        activityMainBinding.buttonCancel.setOnClickListener{
-            with(activityMainBinding.content){
-                viewModel.clearEdit()
-                activityMainBinding.buttonCancel.visibility = View.INVISIBLE
-                setText("")
-                clearFocus()
-                AndroidUtils.hideKeyboard(this)
-            }
-        }
 
-        viewModel.data.observe(this) { posts ->
+        viewModel.data.observe(this)
+        { posts ->
             adaptor.submitList(posts)
         }
+
         activityMainBinding.List.adapter = adaptor
     }
 }
-

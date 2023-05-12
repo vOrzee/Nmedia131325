@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -16,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_foreground"
-        />
+        android:contentDescription="@string/avatar" />
 
 
     <TextView
@@ -27,16 +28,15 @@
         android:maxLines="1"
         android:ellipsize="end"
         app:layout_constraintStart_toEndOf="@+id/avatarImageView"
-        app:layout_constraintTop_toTopOf="@+id/avatarImageView"
-        android:text="Нетология. Университет интернет профессий будущего !"
-        />
+        app:layout_constraintTop_toTopOf="@+id/avatarImageView" />
+
     <TextView
         android:id="@+id/dateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/avatarImageView"
         app:layout_constraintTop_toBottomOf="@+id/authorTextView"
-        android:text="08 апреля 2023 года"
+
         />
 
     <Button
@@ -44,11 +44,10 @@
         android:layout_width="44dp"
         android:layout_height="44dp"
         android:backgroundTint="@color/white"
-        android:textColorLink="@color/black"
         app:icon="@drawable/ic_baseline_more_vert_24"
-        app:iconTint="#0B0A0A"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/menu" />
 
 
     <androidx.constraintlayout.widget.Barrier
@@ -56,8 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="avatarImageView"
-        />
+        app:constraint_referenced_ids="avatarImageView" />
 
     <TextView
         android:id="@+id/aboutTextView"
@@ -67,7 +65,6 @@
         android:paddingTop="10dp"
         android:paddingEnd="10dp"
         android:paddingBottom="5dp"
-        android:text="К нам приходят и начинающие специалисты, и руководители крупных компаний. Всех объединяет одно — желание добиться большего, чем есть сейчас.Мы даём те знания и навыки, которые помогают реализовать себя в профессии, больше зарабатывать, оптимизировать рутину и заниматься более сложными, но интересными задачами. "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/avatarImageView"
@@ -78,9 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="aboutTextView"
-        />
-
+        app:constraint_referenced_ids="aboutTextView" />
 
 
     <ImageView
@@ -92,7 +87,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aboutTextView"
         app:srcCompat="@drawable/ic_baseline_like"
-        />
+        android:contentDescription="@string/like" />
 
     <TextView
         android:id="@+id/loveTextView"
@@ -100,7 +95,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="44dp"
-        android:text="10"
         app:layout_constraintBottom_toBottomOf="@+id/loveImageView"
         app:layout_constraintStart_toEndOf="@+id/loveImageView"
         app:layout_constraintTop_toBottomOf="@+id/aboutTextView" />
@@ -113,13 +107,13 @@
         app:layout_constraintBottom_toBottomOf="@+id/loveImageView"
         app:layout_constraintEnd_toStartOf="@+id/repostTextView"
         app:layout_constraintTop_toTopOf="@+id/loveImageView"
-        app:srcCompat="@android:drawable/ic_menu_share" />
+        app:srcCompat="@android:drawable/ic_menu_share"
+        android:contentDescription="@string/repost" />
 
     <TextView
         android:id="@+id/repostTextView"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:text="999"
         app:layout_constraintBottom_toBottomOf="@+id/loveImageView"
         app:layout_constraintEnd_toStartOf="@+id/seeImageView"
         app:layout_constraintStart_toEndOf="@+id/loveTextView"
@@ -133,13 +127,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="50dp"
         app:layout_constraintTop_toTopOf="@+id/loveImageView"
+        android:contentDescription="@string/see"
         app:srcCompat="@drawable/ic_baseline_remove_red_eye_24" />
 
     <TextView
         android:id="@+id/seeTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="3M"
         app:layout_constraintBottom_toBottomOf="@+id/seeImageView"
         app:layout_constraintStart_toEndOf="@+id/seeImageView"
         app:layout_constraintTop_toTopOf="@+id/seeImageView" />

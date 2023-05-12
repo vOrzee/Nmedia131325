@@ -1,12 +1,12 @@
 package ru.netology.nmedia.viewmodel
 
+import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.repository.PostRepository
 import ru.netology.nmedia.repository.PostRepositoryInMemory
-import kotlin.coroutines.coroutineContext
 
 class PostViewModel :ViewModel() {
     private val repository : PostRepository = PostRepositoryInMemory()
@@ -18,7 +18,8 @@ class PostViewModel :ViewModel() {
         likedByMe = false,
         likes = 0,
         reposts = 0,
-        sees = 0
+        sees = 0,
+        video = ""
     )
     val edited = MutableLiveData(empty)
     val data : LiveData<List<Post>> = repository.getData()
@@ -26,6 +27,7 @@ class PostViewModel :ViewModel() {
     fun repostsById(id:Long) = repository.repostById(id)
     fun seesById(id:Long) = repository.seeById(id)
     fun removeById(id:Long) = repository.removeById(id)
+    fun editById(post: Post) = repository.editById(post)
 
     fun save() {
         edited.value?.let{
@@ -44,11 +46,11 @@ class PostViewModel :ViewModel() {
 
     }
 
-    fun edit(post: Post){
-        edited.value = post
-    }
+//    fun edit(post: Post){
+//       edited.value = post
+//    }
 
-    fun clearEdit(){
-        edited.value = empty
-    }
+//   fun clearEdit(){
+//        edited.value = empty
+//    }
 }
