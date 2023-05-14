@@ -16,49 +16,33 @@ class NewPostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding =ActivityNewPostBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        if (editFlag == 1) {
-//            val Context=findViewById<EditText>(R.id.content)
-//            val context=Context.text.toString()
-//            val intent1=Intent(this,ActivityNewPostBinding::class.java).also {
-//                it.putExtra("Context",context)
-//                startActivity(it);
-//            }
-            binding.content.setText("Редактируемое значение")
-//            intent. { putExtra(Intent.EXTRA_TEXT, text)}
-        }
 
+        binding.content.setText(intent?.getStringExtra(Intent.EXTRA_TEXT))
         binding.ok.setOnClickListener {
             val text = binding.content.text.toString()
-            if (editFlag == 0){
-                if (text.isBlank()) {
 
-                    setResult(Activity.RESULT_CANCELED)
-                } else {
-                    setResult(
-                        Activity.RESULT_OK,
-                        Intent().apply { putExtra(Intent.EXTRA_TEXT, text) })
-                }
-            } else {
                 if (text.isBlank()) {
                     setResult(Activity.RESULT_CANCELED)
                 } else {
-                    setResult(
-                        Activity.RESULT_OK,
-                        Intent().apply { putExtra(Intent.EXTRA_TEXT, text) })
+                    if (Intent.ACTION_EDIT == "1") {}
+                    else {
+                        setResult(
+                            Activity.RESULT_OK,
+                            Intent().apply { putExtra(Intent.EXTRA_TEXT, text) })
+                    }
                 }
-            }
-            finish()
+                finish()
         }
 
     }
 
-    object ContractAdd  :ActivityResultContract<Unit, String?>(){
-        override fun createIntent(context: Context, input: Unit): Intent = Intent(context, NewPostActivity::class.java)
+    object ContractAdd  :ActivityResultContract<String, String?>(){
+        override fun createIntent(context: Context, input: String): Intent = Intent(context, NewPostActivity::class.java).putExtra(Intent.EXTRA_TEXT,input)
         override fun parseResult(resultCode: Int, intent: Intent?) = intent?.getStringExtra(Intent.EXTRA_TEXT)
     }
 
-    object ContractEdit  :ActivityResultContract<Unit, String?>(){
-        override fun createIntent(context: Context, input: Unit): Intent = Intent(context, NewPostActivity::class.java)
+    object ContractEdit  :ActivityResultContract<String, String?>(){
+        override fun createIntent(context: Context, input: String): Intent = Intent(context, NewPostActivity::class.java).putExtra((Intent.EXTRA_TEXT),input)
         override fun parseResult(resultCode: Int, intent: Intent?) = intent?.getStringExtra(Intent.EXTRA_TEXT)
     }
 }

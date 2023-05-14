@@ -43,14 +43,5 @@ class PostViewModel :ViewModel() {
                 return
             edited.value = post.copy(content = text)
         }
-
     }
-
-//    fun edit(post: Post){
-//       edited.value = post
-//    }
-
-//   fun clearEdit(){
-//        edited.value = empty
-//    }
 }

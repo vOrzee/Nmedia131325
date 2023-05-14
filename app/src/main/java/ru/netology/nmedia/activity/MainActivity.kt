@@ -16,8 +16,6 @@ import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.viewmodel.PostViewModel
 
 
-var editFlag = 0
-
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,12 +47,9 @@ class MainActivity : AppCompatActivity() {
                         putExtra(Intent.EXTRA_TEXT, post.content)
                         type = "text/plain"
                     }
-                    editFlag = 1
                     viewModel.editById(post)
-
-
-
-                    newPostContractEdit.launch()
+//                  newPostContractEdit.launch(intentEdit.getStringExtra("EXTRA_TEXT").toString())
+                    newPostContractEdit.launch(post.content)
                 }
 
                 override fun onLike(post: Post) {
@@ -89,9 +84,8 @@ class MainActivity : AppCompatActivity() {
         )
 
         activityMainBinding.add.setOnClickListener{
-            newPostContractAdd.launch()
+            newPostContractAdd.launch("")
         }
-
 
         viewModel.data.observe(this)
         { posts ->
@@ -101,3 +95,4 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding.List.adapter = adaptor
     }
 }
+

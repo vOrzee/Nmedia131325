@@ -1,11 +1,8 @@
 package ru.netology.nmedia.adaptor
 
 import android.widget.PopupMenu
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import androidx.recyclerview.widget.RecyclerView.*
 import ru.netology.nmedia.R
-import ru.netology.nmedia.activity.MainActivity
-import ru.netology.nmedia.activity.editFlag
-import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.databinding.CardPostBinding
 import ru.netology.nmedia.dto.Calculate
 import ru.netology.nmedia.dto.Post
@@ -16,6 +13,14 @@ class PostViewHolder(
 ) : ViewHolder(binding.root) {
     fun bind(post: Post) {
         with(binding) {
+            if (post.video.isNullOrEmpty()){
+                binding.youTubePictire.visibility = GONE
+                binding.youTubeMoviePlay.visibility = GONE
+            }else {
+                binding.youTubePictire.visibility = VISIBLE
+                binding.youTubeMoviePlay.visibility = VISIBLE
+
+            }
             binding.authorTextView.text = post.author
             binding.dateTextView.text = post.published
             binding.aboutTextView.text = post.content
@@ -35,6 +40,9 @@ class PostViewHolder(
             binding.seeImageView.setOnClickListener {
                 listener.onSee(post)
             }
+            binding.youTubeMoviePlay.setOnClickListener {
+                listener.onViewVideo(post)
+            }
             binding.menu.setOnClickListener {
                 PopupMenu(it.context, it).apply {
                     inflate(R.menu.post_options)
@@ -45,12 +53,7 @@ class PostViewHolder(
                                 true
                             }
                             R.id.edit -> {
-                                editFlag = 1
                                 listener.onEdit(post)
-                                true
-                            }
-                            R.id.viewvideo -> {
-                                listener.onViewVideo(post)
                                 true
                             }
                             else -> false

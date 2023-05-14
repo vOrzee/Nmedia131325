@@ -27,6 +27,7 @@
         android:layout_marginTop="4dp"
         android:maxLines="1"
         android:ellipsize="end"
+        android:text="1111111111111111111111111111111"
         app:layout_constraintStart_toEndOf="@+id/avatarImageView"
         app:layout_constraintTop_toTopOf="@+id/avatarImageView" />
 
@@ -36,7 +37,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toEndOf="@+id/avatarImageView"
         app:layout_constraintTop_toBottomOf="@+id/authorTextView"
-
+        android:text="222222222222222222222222222222222"
         />
 
     <Button
@@ -68,7 +69,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/avatarImageView"
+        android:text="3333333333333333333333333333333333333 33333333333333333   33333333333333333333333  33333333333333333333333 33333333"
         app:layout_editor_absoluteX="0dp" />
+
+
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/Barrier2"
@@ -123,11 +127,11 @@
         android:id="@+id/seeImageView"
         android:layout_width="20dp"
         android:layout_height="20dp"
+        android:contentDescription="@string/see"
         app:layout_constraintBottom_toBottomOf="@+id/loveImageView"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="50dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/loveImageView"
-        android:contentDescription="@string/see"
         app:srcCompat="@drawable/ic_baseline_remove_red_eye_24" />
 
     <TextView
@@ -137,5 +141,29 @@
         app:layout_constraintBottom_toBottomOf="@+id/seeImageView"
         app:layout_constraintStart_toEndOf="@+id/seeImageView"
         app:layout_constraintTop_toTopOf="@+id/seeImageView" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/Barrier3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="seeImageView" />
+
+
+    <ImageView
+        android:id="@+id/youTubeMoviePlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Barrier3"
+        app:srcCompat="@drawable/ic_video_24" />
+
+    <ImageView
+        android:id="@+id/youTubePictire"
+        android:layout_width="384dp"
+        android:layout_height="92dp"
+        app:layout_constraintEnd_toStartOf="@+id/youTubeMoviePlay"
+        app:layout_constraintTop_toBottomOf="@+id/Barrier3"
+        app:srcCompat="@drawable/youtubepictire" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
