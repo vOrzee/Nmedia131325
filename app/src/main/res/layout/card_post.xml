@@ -6,7 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:content=".activity.MainActivity">
+    tools:content=".activity.MainActivity"
+    >
 
     <ImageView
         android:id="@+id/avatarImageView"
@@ -17,7 +18,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_foreground"
-        android:contentDescription="@string/avatar" />
+        android:contentDescription="@string/avatar"
+        />
 
 
     <TextView
@@ -29,7 +31,8 @@
         android:ellipsize="end"
         android:text="1111111111111111111111111111111"
         app:layout_constraintStart_toEndOf="@+id/avatarImageView"
-        app:layout_constraintTop_toTopOf="@+id/avatarImageView" />
+        app:layout_constraintTop_toTopOf="@+id/avatarImageView"
+        />
 
     <TextView
         android:id="@+id/dateTextView"
@@ -48,7 +51,8 @@
         app:icon="@drawable/ic_baseline_more_vert_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/menu" />
+        android:contentDescription="@string/menu"
+        />
 
 
     <androidx.constraintlayout.widget.Barrier
@@ -56,7 +60,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="avatarImageView" />
+        app:constraint_referenced_ids="avatarImageView"
+        />
 
     <TextView
         android:id="@+id/aboutTextView"
@@ -70,7 +75,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/avatarImageView"
         android:text="3333333333333333333333333333333333333 33333333333333333   33333333333333333333333  33333333333333333333333 33333333"
-        app:layout_editor_absoluteX="0dp" />
+        app:layout_editor_absoluteX="0dp"
+        />
 
 
 
@@ -79,7 +85,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="aboutTextView" />
+        app:constraint_referenced_ids="aboutTextView"
+        />
 
 
     <ImageView
@@ -87,21 +94,21 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:contentDescription="@string/like"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/aboutTextView"
+        app:layout_constraintTop_toTopOf="@+id/Barrier3"
         app:srcCompat="@drawable/ic_baseline_like"
-        android:contentDescription="@string/like" />
+        />
 
     <TextView
         android:id="@+id/loveTextView"
-        android:layout_width="0dp"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="44dp"
         app:layout_constraintBottom_toBottomOf="@+id/loveImageView"
         app:layout_constraintStart_toEndOf="@+id/loveImageView"
-        app:layout_constraintTop_toBottomOf="@+id/aboutTextView" />
+        />
 
 
     <ImageView
@@ -112,7 +119,8 @@
         app:layout_constraintEnd_toStartOf="@+id/repostTextView"
         app:layout_constraintTop_toTopOf="@+id/loveImageView"
         app:srcCompat="@android:drawable/ic_menu_share"
-        android:contentDescription="@string/repost" />
+        android:contentDescription="@string/repost"
+        />
 
     <TextView
         android:id="@+id/repostTextView"
@@ -121,7 +129,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/loveImageView"
         app:layout_constraintEnd_toStartOf="@+id/seeImageView"
         app:layout_constraintStart_toEndOf="@+id/loveTextView"
-        app:layout_constraintTop_toTopOf="@+id/loveImageView" />
+        app:layout_constraintTop_toTopOf="@+id/loveImageView"
+        />
 
     <ImageView
         android:id="@+id/seeImageView"
@@ -131,8 +140,9 @@
         app:layout_constraintBottom_toBottomOf="@+id/loveImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/loveImageView"
-        app:srcCompat="@drawable/ic_baseline_remove_red_eye_24" />
+        app:layout_constraintStart_toEndOf="@+id/Barrier3"
+        app:srcCompat="@drawable/ic_baseline_remove_red_eye_24"
+        />
 
     <TextView
         android:id="@+id/seeTextView"
@@ -140,14 +150,16 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/seeImageView"
         app:layout_constraintStart_toEndOf="@+id/seeImageView"
-        app:layout_constraintTop_toTopOf="@+id/seeImageView" />
+        app:layout_constraintTop_toTopOf="@+id/seeImageView"
+        />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/Barrier3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="seeImageView" />
+        app:constraint_referenced_ids="youTubePictire"
+        />
 
 
     <ImageView
@@ -155,15 +167,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Barrier3"
+        app:layout_constraintTop_toBottomOf="@+id/Barrier2"
         app:srcCompat="@drawable/ic_video_24" />
 
     <ImageView
         android:id="@+id/youTubePictire"
-        android:layout_width="384dp"
+        android:layout_width="wrap_content"
         android:layout_height="92dp"
         app:layout_constraintEnd_toStartOf="@+id/youTubeMoviePlay"
-        app:layout_constraintTop_toBottomOf="@+id/Barrier3"
+        app:layout_constraintTop_toBottomOf="@+id/Barrier2"
+        app:layout_constraintBottom_toTopOf="@id/Barrier3"
         app:srcCompat="@drawable/youtubepictire" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

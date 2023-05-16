@@ -24,12 +24,9 @@ class NewPostActivity : AppCompatActivity() {
                 if (text.isBlank()) {
                     setResult(Activity.RESULT_CANCELED)
                 } else {
-                    if (Intent.ACTION_EDIT == "1") {}
-                    else {
                         setResult(
                             Activity.RESULT_OK,
                             Intent().apply { putExtra(Intent.EXTRA_TEXT, text) })
-                    }
                 }
                 finish()
         }

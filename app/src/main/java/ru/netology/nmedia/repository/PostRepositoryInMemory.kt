@@ -1,11 +1,8 @@
 package ru.netology.nmedia.repository
 
 import android.content.Intent
-import androidx.activity.result.launch
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import ru.netology.nmedia.R
-import ru.netology.nmedia.activity.NewPostActivity
 import ru.netology.nmedia.dto.Post
 
 class PostRepositoryInMemory : PostRepository {
@@ -30,15 +27,16 @@ class PostRepositoryInMemory : PostRepository {
 
     override fun getData(): LiveData<List<Post>> = data
 
-    override fun editById(post: Post) {
-        if (post.id != 0L) {
-        posts = posts.map {
-            if (post.id != it.id) it
-            else it.copy(content = post.content)
+    override fun editById(id:Long){
+        posts = posts.map { post ->
+            if (post.id == id) {
+                post.copy(content = post.content)
+            } else {
+                post
+            }
         }
         data.value = posts
     }
-}
 
     override fun likeById(id: Long) {
         posts = posts.map { post ->
@@ -104,5 +102,7 @@ class PostRepositoryInMemory : PostRepository {
             }
         data.value = posts
         }
+
+
 
     }

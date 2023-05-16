@@ -42,14 +42,13 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onEdit(post: Post) {
-                    val intentEdit = Intent().apply {
+                    Intent().apply {
                         action = Intent.ACTION_EDIT
                         putExtra(Intent.EXTRA_TEXT, post.content)
                         type = "text/plain"
                     }
-                    viewModel.editById(post)
-//                  newPostContractEdit.launch(intentEdit.getStringExtra("EXTRA_TEXT").toString())
                     newPostContractEdit.launch(post.content)
+                    viewModel.editById(post.id)
                 }
 
                 override fun onLike(post: Post) {

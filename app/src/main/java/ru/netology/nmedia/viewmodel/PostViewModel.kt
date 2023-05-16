@@ -1,6 +1,5 @@
 package ru.netology.nmedia.viewmodel
 
-import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -27,7 +26,7 @@ class PostViewModel :ViewModel() {
     fun repostsById(id:Long) = repository.repostById(id)
     fun seesById(id:Long) = repository.seeById(id)
     fun removeById(id:Long) = repository.removeById(id)
-    fun editById(post: Post) = repository.editById(post)
+    fun editById(id:Long) = repository.editById(id)
 
     fun save() {
         edited.value?.let{

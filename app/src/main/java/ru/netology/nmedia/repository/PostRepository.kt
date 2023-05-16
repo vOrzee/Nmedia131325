@@ -1,6 +1,6 @@
 package ru.netology.nmedia.repository
 
-import android.content.Intent
+
 import androidx.lifecycle.LiveData
 import ru.netology.nmedia.dto.Post
 
@@ -10,6 +10,6 @@ interface PostRepository {
     fun repostById(id : Long)
     fun seeById(id : Long)
     fun removeById(id:Long)
+    fun editById(id:Long)
     fun save(post: Post)
-    fun editById(post: Post)
 }
