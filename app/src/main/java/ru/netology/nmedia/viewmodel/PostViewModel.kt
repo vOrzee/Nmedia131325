@@ -26,13 +26,17 @@ class PostViewModel :ViewModel() {
     fun repostsById(id:Long) = repository.repostById(id)
     fun seesById(id:Long) = repository.seeById(id)
     fun removeById(id:Long) = repository.removeById(id)
-    fun editById(id:Long) = repository.editById(id)
 
     fun save() {
         edited.value?.let{
             repository.save(it)
         }
         edited.value = empty
+    }
+    fun editById(id:Long){
+        edited.value = data.value?.find {
+            it.id == id
+        }?.copy() ?: empty
     }
 
     fun changeContent(content:String){

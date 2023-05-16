@@ -10,6 +10,5 @@ interface PostRepository {
     fun repostById(id : Long)
     fun seeById(id : Long)
     fun removeById(id:Long)
-    fun editById(id:Long)
     fun save(post: Post)
 }

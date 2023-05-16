@@ -1,11 +1,8 @@
 package ru.netology.nmedia.activity
 
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.widget.Toast
-import androidx.activity.result.launch
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import ru.netology.nmedia.R
@@ -42,13 +39,13 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onEdit(post: Post) {
-                    Intent().apply {
+                 Intent().apply {
                         action = Intent.ACTION_EDIT
                         putExtra(Intent.EXTRA_TEXT, post.content)
                         type = "text/plain"
                     }
-                    newPostContractEdit.launch(post.content)
                     viewModel.editById(post.id)
+                    newPostContractEdit.launch(post.content)
                 }
 
                 override fun onLike(post: Post) {
