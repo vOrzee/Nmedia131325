@@ -16,14 +16,14 @@ class NewPostActivity : AppCompatActivity() {
 
         binding.content.setText(intent?.getStringExtra(Intent.EXTRA_TEXT))
         binding.ok.setOnClickListener {
-            val text = binding.content.text.toString()
+ //           val text = binding.content.text.toString()
 
-                if (text.isBlank()) {
+                if (binding.content.text.toString().isBlank()) {
                     setResult(Activity.RESULT_CANCELED)
                 } else {
                         setResult(
                             Activity.RESULT_OK,
-                            Intent().apply { putExtra(Intent.EXTRA_TEXT, text) })
+                            Intent().apply { putExtra(Intent.EXTRA_TEXT, binding.content.text.toString()) })
                 }
                 finish()
         }

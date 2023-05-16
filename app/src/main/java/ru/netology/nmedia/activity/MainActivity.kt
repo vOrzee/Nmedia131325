@@ -69,8 +69,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 override fun onViewVideo(post: Post) {
-                    if (post.video.isNullOrEmpty()){}
-                    else {
+                    if (post.video.isNotBlank() && post.video.isNotEmpty() ) {
                         val intentVideo = Intent(Intent.ACTION_VIEW, Uri.parse(post.video))
                         startActivity(intentVideo)
                     }
