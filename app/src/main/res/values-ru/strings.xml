@@ -5,4 +5,14 @@
     <string name="edit">редактировать</string>
     <string name="remove">удалить</string>
     <string name="input_post">введите пост</string>
+    <string name="avatar">avatar</string>
+    <string name="like">Like</string>
+    <string name="repost">Repost</string>
+    <string name="see">See</string>
+    <string name="menu">menushka</string>
+    <string name="chooser_share_post">chooser_share_post</string>
+    <string name="error_content">error_content</string>
+    <string name="chooser_edit_post">chooser_edit_post</string>
+    <string name="editing_post">editing_post</string>
+    <string name="view_video">view video</string>
 </resources>
